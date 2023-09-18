@@ -65,7 +65,7 @@ const query1 = async(req, res) => {
         return res.status(400).json({msg:"Required parameters not found"});
     }
     
-    connection.query(sqlQuery,params, function(err, results) {
+    connection.query(sqlQuery, params, function(err, results) {
         if (err) {
             return res.status(400).json({msg:"Error fetching the data"});
         } else {
