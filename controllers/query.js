@@ -53,6 +53,17 @@ const query1 = async(req, res) => {
 
         console.log(sqlQuery);
     }
+    if(Object.keys(req.body).length === 0) {
+        return res.status(400).json({msg:"No parameter found"});
+    }
+
+    if(Object.keys(req.body).length == 1) {
+        return res.status(400).json({msg:"Invalid paramter"});
+    }
+
+    if(!(Object.keys(req.body).includes("startdate") && Object.keys(req.body).includes("enddate"))) {
+        return res.status(400).json({msg:"Required parameters not found"});
+    }
     
     connection.query(sqlQuery,params, function(err, results) {
         if (err) {
