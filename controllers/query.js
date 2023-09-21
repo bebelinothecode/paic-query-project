@@ -14,14 +14,14 @@ const query1 = async(req, res) => {
     let sqlQuery = "SELECT * FROM call_detail_records ";
 
     if (startdate&&enddate) {
-        console.log("1111");
+        // console.log("1111");
 
         sqlQuery += "WHERE RECORD_DATE BETWEEN ? AND ? ";
         console.log(sqlQuery);
     } 
 
     if(startdate&&enddate&&msisdn) {
-        console.log("bebelino");
+        // console.log("bebelino");
 
         if (sqlQuery.includes("WHERE")) {
             sqlQuery += " AND";
@@ -37,9 +37,9 @@ const query1 = async(req, res) => {
     } 
 
     if (startdate&&enddate&&imsi) {
-        console.log("dickson");
+        // console.log("dickson");
 
-        console.log(sqlQuery);
+        // console.log(sqlQuery);
 
         if (sqlQuery.includes("WHERE")) {
             sqlQuery += " AND";
@@ -58,7 +58,7 @@ const query1 = async(req, res) => {
     }
 
     if(Object.keys(req.body).length == 1) {
-        return res.status(400).json({msg:"Invalid paramter"});
+        return res.status(400).json({msg:"At least two parameters required"});
     }
 
     if(!(Object.keys(req.body).includes("startdate") && Object.keys(req.body).includes("enddate"))) {
